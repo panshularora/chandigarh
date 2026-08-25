@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////app/data/deeptrace.db
+      XAI_API_KEY: ${XAI_API_KEY:-}
+    volumes:
+      - deeptrace-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  deeptrace-data:

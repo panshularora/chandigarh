@@ -1,0 +1,8 @@
+deeptrace/frontend/node_modules
+deeptrace/frontend/dist
+deeptrace/backend/data
+deeptrace/backend/.venv
+**/__pycache__
+.git
+ppt_assets
+**/*.db

@@ -1,0 +1,17 @@
+deeptrace/backend/data/*.db
+deeptrace/backend/data/uploads/*
+deeptrace/backend/data/heatmaps/*
+deeptrace/backend/data/reports/*
+!deeptrace/backend/data/**/.gitkeep
+deeptrace/frontend/node_modules
+deeptrace/frontend/dist
+deeptrace/backend/.venv
+.env
+__pycache__/
+*.pyc
+.venv/
+ppt_assets/
+*.log
+.DS_Store
+/package-lock.json
+/node_modules

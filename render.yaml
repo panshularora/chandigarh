@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: deeptrace
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: LIGHT_SEED
+        value: "true"
+      - key: FRONTEND_DIST
+        value: /app/frontend_dist
+      - key: SECRET_KEY
+        generateValue: true

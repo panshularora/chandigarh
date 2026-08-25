@@ -1,0 +1,11 @@
+backend/data/*.db
+backend/data/uploads/*
+backend/data/heatmaps/*
+backend/data/reports/*
+!backend/data/**/.gitkeep
+frontend/node_modules
+frontend/dist
+.env
+__pycache__/
+*.pyc
+.venv/
