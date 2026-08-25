@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm --prefix deeptrace/frontend ci && npm --prefix deeptrace/frontend run build && mkdir -p public && cp -r deeptrace/frontend/dist/. public/",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "memory": 1024
+    }
+  }
+}

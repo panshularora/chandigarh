@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -29,7 +30,9 @@ app.add_middleware(
 )
 app.include_router(router, prefix="/api")
 
-FRONTEND = Path(settings.frontend_dist) if settings.frontend_dist else Path(__file__).resolve().parents[2] / "frontend" / "dist"
+FRONTEND = Path("/nonexistent") if os.environ.get("VERCEL") else (
+    Path(settings.frontend_dist) if settings.frontend_dist else Path(__file__).resolve().parents[2] / "frontend" / "dist"
+)
 
 
 @app.get("/api")

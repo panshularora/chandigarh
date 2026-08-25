@@ -15,3 +15,5 @@ ppt_assets/
 .DS_Store
 /package-lock.json
 /node_modules
+/.vercel
+/public

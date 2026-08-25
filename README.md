@@ -26,6 +26,15 @@ docker run --rm -p 8000:8000 deeptrace
 
 Open http://localhost:8000
 
+## Deploy on Vercel
+
+```powershell
+cd C:\Users\Panshul\Desktop\chandigarh
+vercel --yes --prod
+```
+
+Static console + FastAPI at `/api`. Demo: `inspector` / `chandigarh2026`.
+
 ## Deploy
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/panshularora/chandigarh)
