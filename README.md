@@ -26,14 +26,13 @@ docker run --rm -p 8000:8000 deeptrace
 
 Open http://localhost:8000
 
-## Deploy on Render
+## Deploy
 
-This repo includes `render.yaml`. After the code is on GitHub:
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/panshularora/chandigarh)
 
-1. Open [Render Blueprint](https://render.com/deploy?repo=https://github.com/panshularora/chandigarh)
-2. Apply the `deeptrace` web service
+One click on that button applies `render.yaml` (Docker web service, `/api/health` check).
 
-Or: Render → New → Blueprint → pick `panshularora/chandigarh`.
+Image (after CI): `ghcr.io/panshularora/chandigarh:latest`
 
 ## Stack
 
