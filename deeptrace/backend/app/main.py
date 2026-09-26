@@ -7,11 +7,12 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from .api import router
-from .config import settings
+from .config import check_secret_key, settings
 from .database import Base, engine
 from .seed import enrich_demo, seed_if_empty
 from .services.storage import ensure_dirs
 
+check_secret_key(settings)
 ensure_dirs()
 Base.metadata.create_all(bind=engine)
 seed_if_empty()

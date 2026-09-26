@@ -6,6 +6,8 @@ services:
     environment:
       DATABASE_URL: sqlite:////app/data/deeptrace.db
       XAI_API_KEY: ${XAI_API_KEY:-}
+      SECRET_KEY: ${SECRET_KEY:-}
+      DEMO_MODE: ${DEMO_MODE:-false}
     volumes:
       - deeptrace-data:/app/data
     restart: unless-stopped
