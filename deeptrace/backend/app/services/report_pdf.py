@@ -31,6 +31,18 @@ def _verdict_color(v: str) -> Color:
     return SAFFRON
 
 
+def report_payload(case: dict, evidence: dict, analysis: dict) -> str:
+    return f"{case['public_id']}|{evidence.get('sha256')}|{analysis['verdict']}|{analysis['ai_likelihood']}"
+
+
+def sign_payload(payload: str) -> str:
+    return hmac.new(settings.secret_key.encode(), payload.encode(), hashlib.sha256).hexdigest()
+
+
+def verify_signature(payload: str, signature: str) -> bool:
+    return hmac.compare_digest(sign_payload(payload), signature)
+
+
 def build_report(
     *,
     dest: Path,
@@ -170,8 +182,8 @@ def build_report(
 
     c.setFillColor(STEEL)
     c.rect(12 * mm, 18 * mm, w - 24 * mm, 18 * mm, fill=1, stroke=0)
-    payload = f"{case['public_id']}|{evidence.get('sha256')}|{analysis['verdict']}|{analysis['ai_likelihood']}"
-    sig = hmac.new(settings.secret_key.encode(), payload.encode(), hashlib.sha256).hexdigest()
+    payload = report_payload(case, evidence, analysis)
+    sig = sign_payload(payload)
     content_hash = hashlib.sha256(payload.encode()).hexdigest()
     c.setFillColor(CYAN)
     c.setFont("Helvetica", 7)
