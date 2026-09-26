@@ -7,7 +7,28 @@ permissions:
   contents: read
   packages: write
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: deeptrace/backend
+    env:
+      # Tests set their own SECRET_KEY and temp DB in tests/conftest.py; these keep the run hermetic.
+      DEMO_MODE: "false"
+      XAI_API_KEY: ""
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: deeptrace/backend/requirements*.txt
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -v
   docker:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
