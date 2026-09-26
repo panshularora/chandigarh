@@ -38,6 +38,7 @@ cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+$env:DEMO_MODE = "true"   # or set a real SECRET_KEY; the API refuses to start with the placeholder key otherwise
 uvicorn app.main:app --reload --port 8000
 ```
 
